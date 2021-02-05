@@ -1,0 +1,35 @@
+#Шифрование
+
+import os
+
+def crypt(dir):
+    import pyAesCrypt
+    print('----')
+    key = input('Введите ключ:')
+    bufferSize = 512*1024
+    pyAesCrypt.encryptFile(str(dir), str(dir)+".aes", key, bufferSize)
+    print('Crypted'+ str(dir)+'.aes')
+
+
+dir = input('Введите имя файла:')
+
+crypt(dir)
+
+#Расшифровка
+
+import os
+
+
+def decrypt(file):
+    import pyAesCrypt
+    print("----")
+    key = input('Введите ключ:')
+    bufferSize = 512*1024
+    pyAesCrypt.decryptFile(str(file), str(os.path.splitext(file)[0]), key, bufferSize)
+    print(str(os.path.splitext(file)[0]))
+    os.remove(file)
+
+file=input('Введите имя файла:')
+
+
+decrypt(file)
